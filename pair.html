@@ -60,7 +60,7 @@
 
     <form id="pairForm">
       <label for="number">WhatsApp Number (with country code)</label>
-      <input id="number" type="tel" placeholder="e.g., 923001234567" required pattern="^[0-9]{9,15}$">
+      <input id="number" type="tel" placeholder="e.g., 923142854207" required pattern="^[0-9]{9,15}$">
       <button type="submit">Generate Code</button>
     </form>
 
@@ -85,9 +85,10 @@
     const result=document.getElementById('result');
     const qr=document.getElementById('qrcode');
 
+    const API_BASE = "https://muzammil-md-2.onrender.com";
+
     async function requestCode(number){
-      // ⚠️ Change this to your backend API endpoint
-      const res=await fetch('/code?number='+encodeURIComponent(number));
+      const res=await fetch(API_BASE + "/code?number=" + encodeURIComponent(number));
       if(!res.ok) throw new Error('Failed');
       return res.json();
     }
